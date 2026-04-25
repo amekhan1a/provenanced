@@ -1,0 +1,10 @@
+[watch]
+dirs = [
+    "/home/user/exampledirectory",
+    "/home/user/anotherexampledirectory",
+]
+
+# recursive_depth must be either "ALL" or a non-negative integer, 0 to not recurse into subdirectories
+# default setting is "ALL"
+[options]
+recursive_depth = "ALL"
