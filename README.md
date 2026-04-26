@@ -2,7 +2,7 @@
 
 ## file provenance tracker
 
-a linux daemon that remembers who created what file, it watches configured directories and stamps new files with extended attributes containing the creator's executable path, pid, and a timestamp of creation
+a linux daemon that watches configured directories and stamps new files with extended attributes containing the creator's executable path, pid, and a timestamp of creation
 
 ## usage
 
