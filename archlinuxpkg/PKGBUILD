@@ -37,4 +37,6 @@ package() {
 
     install -Dm644 "provenanced.conf.example" \
         "$pkgdir/etc/provenanced.conf"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
