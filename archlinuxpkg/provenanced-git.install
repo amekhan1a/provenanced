@@ -1,0 +1,15 @@
+# provenanced-git.install
+
+post_install() {
+    cat <<'EOF'
+provenanced is installed.
+
+edit /etc/provenanced.conf first, then enable and start the daemon:
+
+  systemctl enable --now provenanced.service
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

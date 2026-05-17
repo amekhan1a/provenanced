@@ -5,7 +5,7 @@ After=systemd-user-sessions.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/provenanced
+ExecStart=/usr/bin/provenanced
 Restart=on-failure
 RestartSec=5
 User=root

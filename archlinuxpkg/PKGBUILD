@@ -1,0 +1,40 @@
+# Maintainer: Evanga
+
+pkgname=provenanced-git
+_pkgname=provenanced
+pkgver=r0.0000000
+pkgrel=1
+pkgdesc="File provenance tracker daemon using extended attributes"
+arch=('x86_64')
+url="https://github.com/amekhan1a/provenanced"
+license=('GPL3')
+depends=('gcc-libs')
+makedepends=('cargo' 'git' 'rust')
+backup=('etc/provenanced.conf')
+install="${pkgname}.install"
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/$_pkgname"
+    cargo build --release --locked
+}
+
+package() {
+    cd "$srcdir/$_pkgname"
+
+    install -Dm755 "target/release/provenanced" "$pkgdir/usr/bin/provenanced"
+    install -Dm755 "target/release/provenance" "$pkgdir/usr/bin/provenance"
+
+    install -d "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 "provenanced.service" \
+        "$pkgdir/usr/lib/systemd/system/provenanced.service"
+
+    install -Dm644 "provenanced.conf.example" \
+        "$pkgdir/etc/provenanced.conf"
+}
